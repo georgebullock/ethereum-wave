@@ -1,23 +1,29 @@
 import * as React from "react";
 import { ethers } from "ethers";
-import './App.css';
+import "./App.css";
 
 export default function App() {
+  const wave = () => {};
 
-  const wave = () => {
-    
-  }
-  
   return (
     <div className="mainContainer">
-
       <div className="dataContainer">
         <div className="header">
-        👋 Hey there!
+          <span role="img" aria-label="emoji">
+            👋
+          </span>
         </div>
 
         <div className="bio">
-        I am farza and I worked on self-driving cars so that's pretty cool right? Connect your Ethereum wallet and wave at me!
+          A frontend developer based in Berlin, Germany.
+        </div>
+
+        <div className="bio">
+          Wave at me below and it will live on the Ethereum blockchain, forever
+          <span role="img" aria-label="emoji">
+            🤯
+          </span>
+          ;
         </div>
 
         <button className="waveButton" onClick={wave}>
