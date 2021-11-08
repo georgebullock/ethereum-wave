@@ -10,7 +10,7 @@ export default function App() {
       <div className="dataContainer">
         <div className="header">
           <span role="img" aria-label="emoji">
-            👋
+            👋 Hey, I'm George
           </span>
         </div>
 
