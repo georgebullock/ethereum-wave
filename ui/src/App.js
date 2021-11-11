@@ -6,7 +6,7 @@ import ETHEREUM_WAVE_ABI from "./EthereumWave.json";
 
 export default function App() {
   const [currentAccount, setCurrentAccount] = useState();
-  const [count, setCount] = useState();
+  const [waves, setWaves] = useState([]);
 
   const checkWalletConnection = async () => {
     try {
@@ -47,7 +47,7 @@ export default function App() {
     const { ethereum } = window;
     if (!ethereum) console.error("Ethereum object not available. Get MetaMask");
 
-    const contractAddress = "0xFE428193bdB74F613FbA4C82C6ea859f00087512";
+    const contractAddress = "0x355c1291d4d8d828bcA636caFB357363E106F999";
     const contractABI = ETHEREUM_WAVE_ABI.abi;
 
     try {
@@ -59,18 +59,20 @@ export default function App() {
         signer
       );
 
-      const waveTxn = await ethereumWaveContract.wave();
+      const waveTxn = await ethereumWaveContract.wave(
+        "First wave: Hello World!"
+      );
       console.log("Wave Txn Hash:", waveTxn.hash);
     } catch (error) {
       console.log("error:", error);
     }
   };
 
-  const waveCount = async () => {
+  const getAllWaves = async () => {
     const { ethereum } = window;
     if (!ethereum) console.error("Ethereum object not available. Get MetaMask");
 
-    const contractAddress = "0xFE428193bdB74F613FbA4C82C6ea859f00087512";
+    const contractAddress = "0x355c1291d4d8d828bcA636caFB357363E106F999";
     const contractABI = ETHEREUM_WAVE_ABI.abi;
 
     try {
@@ -82,8 +84,9 @@ export default function App() {
         signer
       );
 
-      let count = await ethereumWaveContract.getTotalWaves();
-      return count.toNumber();
+      let waves = await ethereumWaveContract.getAllWaves();
+
+      return waves;
     } catch (error) {
       console.log("error:", error);
     }
@@ -92,13 +95,34 @@ export default function App() {
   useEffect(() => {
     checkWalletConnection();
 
-    const getWaveCount = async () => {
-      const count = await waveCount();
-      setCount(count);
+    const fetchWaves = async () => {
+      const waves = await getAllWaves();
+
+      const formattedWaves = waves.map((item) => {
+        return {
+          address: item.waver,
+          message: item.message,
+          timeStamp: new Date(item.timeStamp * 1000),
+        };
+      });
+
+      setWaves(formattedWaves);
     };
 
-    getWaveCount();
+    fetchWaves();
   }, []);
+
+  console.log("waves:", waves);
+
+  const content = waves.map((wave) => {
+    return (
+      <div key={wave.address}>
+        <p>{wave.address}</p>
+        <p>{wave.message}</p>
+        <p>{wave.timeStamp.toString()}</p>
+      </div>
+    );
+  });
 
   return (
     <div className="mainContainer">
@@ -122,7 +146,7 @@ export default function App() {
         </div>
 
         <div className="bio">
-          I have received {count > 0 ? count : "Loading Waves..."} waves
+          I have received {waves.length > 0 ? waves.length : 0} waves
         </div>
 
         <button className="waveButton" onClick={wave}>
@@ -134,6 +158,8 @@ export default function App() {
             Connect Wallet
           </button>
         )}
+
+        <div className="bio">{content}</div>
       </div>
     </div>
   );
