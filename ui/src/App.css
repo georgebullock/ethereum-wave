@@ -1,34 +1,89 @@
-.mainContainer {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 64px;
-}
-
-.dataContainer {
+.main-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  max-width: 600px;
+  padding: 1rem;
+}
+
+.data-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-width: 60ch;
+  margin: auto;
 }
 
 .header {
-  text-align: center;
-  font-size: 32px;
-  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.bio-container {
+  margin: 0 auto 1rem auto;
+  line-height: 1.5;
+  max-width: 40ch;
 }
 
 .bio {
-  text-align: center;
-  color: gray;
-  margin-top: 16px;
+  margin-bottom: 0.5rem;
 }
 
-.waveButton {
+.waves-count {
+  display: flex;
+  justify-content: center;
+}
+
+.emoji {
+  margin-left: 0.25rem;
+}
+
+.button-group {
+  margin-bottom: 1rem;
+}
+
+.wave-button {
+  width: 30rem;
+  max-width: 100%;
   cursor: pointer;
-  margin-top: 16px;
   padding: 8px;
   border: 0;
-  border-radius: 5px;
-  
+  border-radius: 6px;
+  max-width: 20rem;
+}
+
+.wave-button:first-child {
+  margin-bottom: 1rem;
+}
+
+.wave-list {
+  margin: 0;
+  padding: 0;
+}
+
+.wave-item {
+  max-width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid gray;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.wave-message {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.wave-address,
+.wave-timestamp {
+  line-height: 1.5;
+}
+
+.wave-label {
+  font-weight: bold;
+  margin-right: 0.25rem;
+}
+
+.wave-text {
+  overflow-wrap: break-word;
 }

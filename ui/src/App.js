@@ -119,51 +119,75 @@ export default function App() {
     waves &&
     waves.map((wave) => {
       return (
-        <div key={wave.address}>
-          <p>{wave.address}</p>
-          <p>{wave.message}</p>
-          <p>{wave.timeStamp.toString()}</p>
-        </div>
+        <li key={wave.address} className="wave-item">
+          <article className="wave-content">
+            <section className="wave-message">
+              <span className="wave-text">{wave.message}</span>
+            </section>
+            <section className="wave-address">
+              <span className="wave-label">Sender:</span>
+              <span className="wave-text">{wave.address}</span>
+            </section>
+            <section className="wave-time-stamp">
+              <span className="wave-label">Date:</span>
+              <span className="wave-text">
+                {wave.timeStamp.toLocaleString()}
+              </span>
+            </section>
+          </article>
+        </li>
       );
     });
 
   return (
-    <div className="mainContainer">
-      <div className="dataContainer">
+    <div className="main-container">
+      <div className="data-container">
         <div className="header">
           <span role="img" aria-label="emoji">
             👋 Hey, I'm George
           </span>
         </div>
 
-        <div className="bio">
-          A frontend developer based in Berlin, Germany.
-        </div>
+        <section className="bio-container">
+          <div className="bio">
+            A frontend developer based in Berlin, Germany.
+          </div>
 
-        <div className="bio">
-          Wave at me below and it will live on the Ethereum blockchain, forever
-          <span role="img" aria-label="emoji">
-            🤯
-          </span>
-          ;
-        </div>
+          <div className="bio">
+            Connect your wallet then push the button "Wave at me" button to wave
+            at me. Your wave will live on the Ethereum blockchain, forever
+            <span role="img" aria-label="emoji" className="emoji">
+              🤯
+            </span>
+          </div>
 
-        <div className="bio">
-          I have received {waves && waves.length > 0 ? waves.length : 0} waves
-        </div>
+          <div className="waves-count">
+            Wave count: {waves && waves.length > 0 ? waves.length : 0}
+            {waves && waves.length > 0 ? (
+              <span role="img" aria-label="emoji" className="emoji">
+                🥳
+              </span>
+            ) : (
+              <span role="img" aria-label="emoji" className="emoji">
+                🥺
+              </span>
+            )}
+          </div>
+        </section>
 
-        <button className="waveButton" onClick={wave}>
-          Wave at Me
-        </button>
-
-        {!currentAccount && (
-          <button className="waveButton" onClick={connectWallet}>
-            Connect Wallet
+        <section className="button-group">
+          <button className="wave-button" onClick={wave}>
+            Wave at Me
           </button>
-        )}
 
-        <div className="bio">{content}</div>
+          {!currentAccount && (
+            <button className="wave-button" onClick={connectWallet}>
+              Connect Wallet
+            </button>
+          )}
+        </section>
       </div>
+      <ul className="wave-list">{content}</ul>
     </div>
   );
 }
