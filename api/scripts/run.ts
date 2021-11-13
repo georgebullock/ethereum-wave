@@ -9,6 +9,7 @@ const main = async () => {
     // @ts-ignore
     value: hre.ethers.utils.parseEther("0.1"),
   });
+
   await waveContract.deployed();
   console.log("Contract address:", waveContract.address);
 
@@ -48,6 +49,20 @@ const main = async () => {
 
   const allWaves = await waveContract.getAllWaves();
   console.log(allWaves);
+
+  const waveTxn1 = await waveContract.wave("This is wave #1");
+  await waveTxn1.wait();
+
+  const waveTxn2 = await waveContract.wave("This is wave #2");
+  await waveTxn2.wait();
+
+  // @ts-ignore
+  contractBalance = await hre.ethers.provider.getBalance(waveContract.address);
+  console.log(
+    "Contract balance:",
+    // @ts-ignore
+    hre.ethers.utils.formatEther(contractBalance)
+  );
 };
 
 const runMain = async () => {
