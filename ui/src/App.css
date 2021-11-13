@@ -29,19 +29,15 @@
 .waves-count {
   display: flex;
   justify-content: center;
+  font-size: 1.5rem;
 }
 
 .emoji {
   margin-left: 0.25rem;
 }
 
-.button-group {
-  margin-bottom: 1rem;
-}
-
 .wave-button {
   width: 30rem;
-  max-width: 100%;
   cursor: pointer;
   padding: 8px;
   border: 0;
@@ -51,7 +47,8 @@
 
 .wave-button:first-child {
   margin-bottom: 1rem;
-  max-width: 100%;
+  background-color: orange;
+  font-size: 1.5rem;
 }
 
 .wave-list {
@@ -86,6 +83,27 @@
 
 .wave-text {
   overflow-wrap: break-word;
+}
+
+.form {
+  margin: 0 auto 1rem auto;
+  line-height: 1.5;
+  max-width: 100%;
+}
+
+.form-headline {
+  margin-bottom: 0.5rem;
+}
+
+input {
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 3rem;
+}
+
+.comment-text-box {
+  margin-bottom: 1rem;
+  max-width: 100%;
 }
 
 @media screen and (min-width: 600px) {
