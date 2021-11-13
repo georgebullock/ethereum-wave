@@ -15,7 +15,7 @@ contract EthereumWave {
 
     Wave[] public waves;
 
-    constructor() {
+    constructor() payable {
         console.log("This is Ethereum Wave");
     }
 
@@ -24,7 +24,6 @@ contract EthereumWave {
         console.log("%s has waved!", msg.sender);
 
         waves.push(Wave(msg.sender, _message, block.timestamp));
-
         emit NewWave(msg.sender, _message, block.timestamp);
 
         uint256 wavePayment = 0.0001 ether;

@@ -47,7 +47,7 @@ export default function App() {
     const { ethereum } = window;
     if (!ethereum) console.error("Ethereum object not available. Get MetaMask");
 
-    const contractAddress = "0x355c1291d4d8d828bcA636caFB357363E106F999";
+    const contractAddress = "0x937dF474c0b3833e9646e5Df55B6F236dCEeab95";
     const contractABI = ETHEREUM_WAVE_ABI.abi;
 
     try {
