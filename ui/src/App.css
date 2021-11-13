@@ -55,14 +55,16 @@
 }
 
 .wave-list {
+  margin: auto;
   margin: 0;
   padding: 0;
 }
 
 .wave-item {
+  width: 60ch;
   max-width: 100%;
   list-style-type: none;
-  margin: 0;
+  margin: 0 auto 1rem auto;
   padding: 0;
   border: 1px solid gray;
   border-radius: 6px;
