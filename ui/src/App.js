@@ -60,7 +60,9 @@ export default function App() {
         signer
       );
 
-      const waveTxn = await ethereumWaveContract.wave(message);
+      const waveTxn = await ethereumWaveContract.wave(message, {
+        gasLimit: 300000,
+      });
       console.log("Wave Txn Hash:", waveTxn.hash);
     } catch (error) {
       console.log("error:", error);
