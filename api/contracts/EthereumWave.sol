@@ -31,8 +31,8 @@ contract EthereumWave {
             wavePayment <= address(this).balance,
             "Transaction cancelled. Insufficient funds."
         );
-        (bool success, ) = (msg.sender).call{value: wavePayment}("");
 
+        (bool success, ) = (msg.sender).call{value: wavePayment}("");
         require(success, "Failed to withdraw payment from contract.");
     }
 

@@ -97,14 +97,15 @@ export default function App() {
 
     const fetchWaves = async () => {
       const waves = await getAllWaves();
-
-      const formattedWaves = waves.map((item) => {
-        return {
-          address: item.waver,
-          message: item.message,
-          timeStamp: new Date(item.timeStamp * 1000),
-        };
-      });
+      const formattedWaves =
+        waves &&
+        waves.map((item) => {
+          return {
+            address: item.waver,
+            message: item.message,
+            timeStamp: new Date(item.timeStamp * 1000),
+          };
+        });
 
       setWaves(formattedWaves);
     };
@@ -114,15 +115,17 @@ export default function App() {
 
   console.log("waves:", waves);
 
-  const content = waves.map((wave) => {
-    return (
-      <div key={wave.address}>
-        <p>{wave.address}</p>
-        <p>{wave.message}</p>
-        <p>{wave.timeStamp.toString()}</p>
-      </div>
-    );
-  });
+  const content =
+    waves &&
+    waves.map((wave) => {
+      return (
+        <div key={wave.address}>
+          <p>{wave.address}</p>
+          <p>{wave.message}</p>
+          <p>{wave.timeStamp.toString()}</p>
+        </div>
+      );
+    });
 
   return (
     <div className="mainContainer">
@@ -146,7 +149,7 @@ export default function App() {
         </div>
 
         <div className="bio">
-          I have received {waves.length > 0 ? waves.length : 0} waves
+          I have received {waves && waves.length > 0 ? waves.length : 0} waves
         </div>
 
         <button className="waveButton" onClick={wave}>
