@@ -7,6 +7,7 @@ import ETHEREUM_WAVE_ABI from "./EthereumWave.json";
 export default function App() {
   const [currentAccount, setCurrentAccount] = useState();
   const [waves, setWaves] = useState([]);
+  const [message, setMessage] = useState("Type something...");
 
   const checkWalletConnection = async () => {
     try {
@@ -59,9 +60,7 @@ export default function App() {
         signer
       );
 
-      const waveTxn = await ethereumWaveContract.wave(
-        "First wave: Hello World!"
-      );
+      const waveTxn = await ethereumWaveContract.wave(message);
       console.log("Wave Txn Hash:", waveTxn.hash);
     } catch (error) {
       console.log("error:", error);
@@ -72,7 +71,7 @@ export default function App() {
     const { ethereum } = window;
     if (!ethereum) console.error("Ethereum object not available. Get MetaMask");
 
-    const contractAddress = "0x355c1291d4d8d828bcA636caFB357363E106F999";
+    const contractAddress = "0x937dF474c0b3833e9646e5Df55B6F236dCEeab95";
     const contractABI = ETHEREUM_WAVE_ABI.abi;
 
     try {
@@ -113,13 +112,15 @@ export default function App() {
     fetchWaves();
   }, []);
 
-  console.log("waves:", waves);
+  const handleChange = (e) => {
+    setMessage(e.target.value);
+  };
 
   const content =
     waves &&
-    waves.map((wave) => {
+    waves.map((wave, index) => {
       return (
-        <li key={wave.address} className="wave-item">
+        <li key={`${wave.address}-${index}`} className="wave-item">
           <article className="wave-content">
             <section className="wave-message">
               <span className="wave-text">{wave.message}</span>
@@ -175,7 +176,25 @@ export default function App() {
           </div>
         </section>
 
-        <section className="button-group">
+        <form className="form">
+          <label className="form-label">
+            <h3 className="form-headline">
+              Send a wave
+              <span role="img" aria-label="emoji" className="emoji">
+                👇🏽
+              </span>
+              . Send it with text!
+            </h3>
+            <textarea
+              className="comment-text-box"
+              name="comment"
+              rows="10"
+              cols="50"
+              onChange={handleChange}
+            />
+          </label>
+        </form>
+        <div className="button-group">
           <button className="wave-button" onClick={wave}>
             Wave at Me
           </button>
@@ -185,7 +204,7 @@ export default function App() {
               Connect Wallet
             </button>
           )}
-        </section>
+        </div>
       </div>
       <ul className="wave-list">{content}</ul>
     </div>
