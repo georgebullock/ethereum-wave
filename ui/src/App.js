@@ -191,6 +191,7 @@ export default function App() {
               rows="10"
               cols="50"
               onChange={handleChange}
+              placeholder={message}
             />
           </label>
         </form>
