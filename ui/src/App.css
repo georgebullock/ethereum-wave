@@ -8,8 +8,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  max-width: 60ch;
-  margin: auto;
+  max-width: 100%;
 }
 
 .header {
@@ -52,16 +51,15 @@
 
 .wave-button:first-child {
   margin-bottom: 1rem;
+  max-width: 100%;
 }
 
 .wave-list {
-  margin: auto;
   margin: 0;
   padding: 0;
 }
 
 .wave-item {
-  width: 60ch;
   max-width: 100%;
   list-style-type: none;
   margin: 0 auto 1rem auto;
@@ -88,4 +86,10 @@
 
 .wave-text {
   overflow-wrap: break-word;
+}
+
+@media screen and (min-width: 600px) {
+  .wave-item {
+    width: 60ch;
+  }
 }
