@@ -48,7 +48,7 @@ export default function App() {
     const { ethereum } = window;
     if (!ethereum) console.error("Ethereum object not available. Get MetaMask");
 
-    const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+    const contractAddress = "0x1A23C7E954CB29C312b4f53907cB93Ad2ffe1141";
     const contractABI = ETHEREUM_WAVE_ABI.abi;
 
     try {
@@ -73,7 +73,7 @@ export default function App() {
     const { ethereum } = window;
     if (!ethereum) console.error("Ethereum object not available. Get MetaMask");
 
-    const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+    const contractAddress = "0x1A23C7E954CB29C312b4f53907cB93Ad2ffe1141";
     const contractABI = ETHEREUM_WAVE_ABI.abi;
 
     try {
