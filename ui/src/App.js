@@ -108,7 +108,11 @@ export default function App() {
           };
         });
 
-      setWaves(formattedWaves);
+      const sortedWaves = formattedWaves.sort((a, b) => {
+        return b.timeStamp - a.timeStamp;
+      });
+
+      setWaves(sortedWaves);
     };
 
     fetchWaves();
